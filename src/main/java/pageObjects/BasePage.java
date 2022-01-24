@@ -8,6 +8,10 @@ import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+/** Base Page is a super class which contains methods fundamental for all page objects
+ * that are to be created. Other page objects inherit from this class (for example the initialization
+ * of the PageFactory*/
+
 public abstract class BasePage {
 
     private static final int TIMEOUT = 15;

@@ -8,6 +8,13 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
+/**
+ * This is the page object for the Swedish type of page - with only one type of layer and
+ * whit components only. This page object class contains all the elements that are on the page
+ * and methods that can be performed on them
+ */
+
+
 public class SWEType extends BasePage {
 
     /**
@@ -34,7 +41,7 @@ public class SWEType extends BasePage {
 
     @FindBy(css = "#root > div > div.WhatsIncluded_wrapper__17GYG > h3")
     WebElement summary;
-    /*******************************/
+
 
 
     /**
@@ -95,14 +102,13 @@ public class SWEType extends BasePage {
     @FindBy(id = "white")
     WebElement colourPicker;
 
-    /*********************/
 
     @FindBy(xpath = "/html/body/iframe")
     WebElement silentFrame;
 
 
     /**
-     * constructor of a super class
+     * constructor of the class
      */
 
     public SWEType(WebDriver driver) {

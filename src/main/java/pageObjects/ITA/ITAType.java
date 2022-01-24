@@ -13,7 +13,7 @@ import pageObjects.BasePage;
 
 public class ITAType extends BasePage {
 
-    //private String PAGE_ADDRESS_ITA = "https://www.ikea.com/it/it/planner/vidga-planner//";
+
 
     /**
      * THESE ARE INTRODUCTORY ELEMENTS

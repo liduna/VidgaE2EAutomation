@@ -11,6 +11,8 @@ public class DriverFactory {
 
     private WebDriver driver;
 
+    /** in main thare are helper classes (such as driver factory) and page object classes, that is those, that are not
+     * directly connected to tests*/
 
     public WebDriver getBrowser(String browser) {
 
