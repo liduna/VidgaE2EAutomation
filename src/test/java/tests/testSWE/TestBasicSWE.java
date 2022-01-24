@@ -1,10 +1,11 @@
 package tests.testSWE;
 
-import customDataProvider.DPswedishType;
+import customDataProvider.DataSWE;
+import driverManager.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pageObjects.SWE.POSweType;
+import pageObjects.SWE.SWEType;
 
 
 public class TestBasicSWE {
@@ -13,23 +14,21 @@ public class TestBasicSWE {
     /**
      * in the brackets there is allocation of dataProvider, specified by name and class, which fetches the data for the test
      */
-    /** I initialize the initlializer here*/
+    /** I initialize the initializer here*/
 
-    POSweType.Initializer browser = new POSweType.Initializer();
-    POSweType vidgaSE;
+    DriverFactory browser = new DriverFactory();
+    SWEType vidgaSE;
 
-    @Test(dataProvider = "edge/SWETypeLocation", dataProviderClass = DPswedishType.class)
+    @Test(dataProvider = "edge/SWETypeLocation", dataProviderClass = DataSWE.class)
     public void first_test_Swedish_Live(String browserName, String address) {
 
         /** Here I initialize objects and pass parameters*/
-
-        vidgaSE = browser.startApp(browserName);
-
-        vidgaSE.navigateToPage(vidgaSE.getAddres(address));
-        vidgaSE.verifyPage();
+        vidgaSE = new SWEType(browser.getBrowser(browserName));
+        vidgaSE.navigateToPage(address);
 
         /** here is the testcase itself*/
 
+        vidgaSE.verifyOnPage();
         vidgaSE.addLayer();
         vidgaSE.confirmMeasurementsNoInput();
         vidgaSE.add15CM();
@@ -40,18 +39,17 @@ public class TestBasicSWE {
         Assert.assertTrue(vidgaSE.getSummary().isDisplayed());
         System.out.println("Summary of the products is displayed");
 
-        //  vidgaSE.closeBrowser();
 
     }
 
-    @Test(dataProvider = "chrome/SWETypeLocation", dataProviderClass = DPswedishType.class)
+    @Test(dataProvider = "chrome/SWETypeLocation", dataProviderClass = DataSWE.class)
     public void parameterizedSWE(String browserName, String address) {
 
 
-        vidgaSE = browser.startApp(browserName);
+        vidgaSE = new SWEType(browser.getBrowser(browserName));
+        vidgaSE.navigateToPage(address);
 
-        vidgaSE.navigateToPage(vidgaSE.getAddres(address));
-        vidgaSE.verifyPage();
+        vidgaSE.verifyOnPage();
 
         vidgaSE.addLayer();
         vidgaSE.confirmMeasurementsNoInput();
@@ -63,7 +61,7 @@ public class TestBasicSWE {
 
 
     }
-
+/**this method executes after each test method and closes the browser*/
     @AfterMethod
     public void afterMethod() {
         vidgaSE.closeBrowser();

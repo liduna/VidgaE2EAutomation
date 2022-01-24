@@ -8,7 +8,7 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class POSweType extends BasePage {
+public class SWEType extends BasePage {
 
     /**
      * THESE ARE INTRODUCTORY ELEMENTS
@@ -38,7 +38,7 @@ public class POSweType extends BasePage {
 
 
     /**
-     * THESE ARE CLICKABLE ELEMENTS - how to implement swiper??
+     * THESE ARE CLICKABLE ELEMENTS
      */
 
     @FindBy(id = "add_layer_button")
@@ -105,14 +105,9 @@ public class POSweType extends BasePage {
      * constructor of a super class
      */
 
-    public POSweType(WebDriver driver) {
+    public SWEType(WebDriver driver) {
         super(driver);
     }
-
-
-    /**
-     * This is nested class that is taking care of initializing driver
-     */
 
 
     /**
@@ -123,15 +118,9 @@ public class POSweType extends BasePage {
         return address;
     }
 
-    /*
-           public void setAddress(String address) {
-            this.pageAddress = address;
-        }
-    */
-    public void verifyPage() {
+
+    public void verifyOnPage() {
         waitForElementToAppear(By.className("page-title"));
-
-
         waitForElementToAppear(By.id("vidga-application"));
         switchToFrame(prodFrame);
         waitForElementToAppear(By.xpath("//*[@id='root']/div/div[1]/img"));

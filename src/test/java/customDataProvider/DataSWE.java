@@ -2,7 +2,7 @@ package customDataProvider;
 
 import org.testng.annotations.DataProvider;
 
-public class DPswedishType {
+public class DataSWE {
 
     //This class provides data for testing of vidga planners "swedish type", that is with only one layer, no pannels
     /** This providers sends data to test case in test class where it is called by "name" of the provider*/

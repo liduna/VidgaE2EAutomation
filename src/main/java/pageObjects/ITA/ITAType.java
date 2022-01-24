@@ -11,9 +11,9 @@ import org.openqa.selenium.support.FindBy;
 
 import pageObjects.BasePage;
 
-public class POItalyType extends BasePage {
+public class ITAType extends BasePage {
 
-    private String PAGE_ADDRESS_ITA = "https://www.ikea.com/it/it/planner/vidga-planner//";
+    //private String PAGE_ADDRESS_ITA = "https://www.ikea.com/it/it/planner/vidga-planner//";
 
     /**
      * THESE ARE INTRODUCTORY ELEMENTS
@@ -136,58 +136,12 @@ public class POItalyType extends BasePage {
      * INTRODUCTORY METHODS
      */
 
-    public POItalyType(WebDriver driver) {
+    public ITAType(WebDriver driver) {
         super(driver);
     }
 
 
-    /**
-     * this is a nested class that takes care about initializing the browser
-     */
 
-    public static class Initializer {
-
-        private WebDriver driver;
-
-
-        public POItalyType startApp(String browser) {
-
-
-            switch (browser) {
-                case "chrome":
-                    System.setProperty("webdriver.chrome.driver", "C:\\drivers\\chromedriver.exe");
-
-                    /** this I have no idea what it is about */
-
-                    String headless = System.getProperty("headless");
-
-                    ChromeDriverManager.chromedriver();
-                    if ("true".equals(headless)) {
-                        ChromeOptions chromeOptions = new ChromeOptions();
-                        chromeOptions.addArguments("--headless");
-                        driver = new ChromeDriver(chromeOptions);
-                    } else {
-                        driver = new ChromeDriver();
-                    }
-
-                    this.driver.manage().window().maximize();
-
-                    break;
-
-            }
-            POItalyType vidgaIT = new POItalyType(driver);
-            return vidgaIT;
-        }
-
-        public void quit() {
-            driver.quit();
-        }
-    }
-
-
-    public String getAddres(String address) {
-        return address;
-    }
 
     public void verifyPage() {
         waitForElementToAppear(By.className("page-title"));

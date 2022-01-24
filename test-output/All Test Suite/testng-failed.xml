@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [All Test Suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="C:/Users/ZenBook PRO/IdeaProjects/VidgaE2EAutomation(failed)">
+    <classes>
+      <class name="tests.testSWE.TestBasicSWE">
+        <methods>
+          <include name="first_test_Swedish_Live" invocation-numbers="0 1"/>
+          <include name="afterMethod"/>
+        </methods>
+      </class> <!-- tests.testSWE.TestBasicSWE -->
+    </classes>
+  </test> <!-- C:/Users/ZenBook PRO/IdeaProjects/VidgaE2EAutomation(failed) -->
+</suite> <!-- Failed suite [All Test Suite] -->

@@ -1,54 +1,49 @@
 package tests.testITA;
 
-import customDataProvider.DPItalianType;
+import customDataProvider.DataITA;
+import driverManager.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
-import pageObjects.ITA.POItalyType;
+import pageObjects.ITA.ITAType;
 
 
 public class TestBasicITA {
 
+/** hrere a create a class variable, so I can use it throughout the tests*/
 
-    POItalyType.Initializer browser = new POItalyType.Initializer();
-    POItalyType vidgaIT;
+    DriverFactory browser = new DriverFactory();
+    ITAType vidgaIT;
 
+    @Test(dataProvider = "edge/ITATypeLocation", dataProviderClass = DataITA.class)
+    public void testAddPanel1(String browserName, String address) {
 
-    @Test(dataProvider = "browser/ITATypeLocation", dataProviderClass= DPItalianType.class)
-    public void testAddPanel1(String browserName, String address){
-
-        vidgaIT = browser.startApp(browserName);
-
-        vidgaIT.navigateToPage(vidgaIT.getAddres(address));
-        vidgaIT.verifyPage();
-        vidgaIT.selectPanelOnFirst();
-
-
-
+        vidgaIT = new ITAType(browser.getBrowser(browserName));
+        vidgaIT.navigateToPage(address);
     }
 
-    /**this is a problem since these element dont have their ID's. Necessary to implement ASAP
-     *
+    /**
+     * this is a problem since these element dont have their ID's. Necessary to implement ASAP
      */
-    @Test(dataProvider = "browser/ITATypeLocation", dataProviderClass= DPItalianType.class)
-    public void testAddPanel2(String browserName, String address){
-       // POItalyType.Initializer browser = new POItalyType.Initializer();
-        vidgaIT = browser.startApp(browserName);
-        vidgaIT.navigateToPage(vidgaIT.getAddres(address));
-        vidgaIT.verifyPage();
 
+    @Test(dataProvider = "edge/ITATypeLocation", dataProviderClass = DataITA.class)
+    public void testAddPanel2(String browserName, String address) {
+
+        vidgaIT = new ITAType(browser.getBrowser(browserName));
+        vidgaIT.navigateToPage(address);
+
+
+        vidgaIT.verifyPage();
         vidgaIT.selectPanelOnSecond();
     }
 
 
-    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass= DPItalianType.class)
+    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass = DataITA.class)
     public void first_test_Italian_Live(String browserName, String address) {
 
 
-       // POItalyType.Initializer init = new POItalyType.Initializer();
-         vidgaIT = browser.startApp(browserName);
-
-        vidgaIT.navigateToPage(vidgaIT.getAddres(address));
+        vidgaIT = new ITAType(browser.getBrowser(browserName));
+        vidgaIT.navigateToPage(address);
         vidgaIT.verifyPage();
 
         vidgaIT.addLayer();
@@ -62,14 +57,11 @@ public class TestBasicITA {
 
     }
 
-    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass= DPItalianType.class)
+    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass = DataITA.class)
     public void dropDown_test_Italian_Live(String browserName, String address) {
 
-
-      //  POItalyType.Initializer browser = new POItalyType.Initializer();
-        vidgaIT = browser.startApp(browserName);
-
-        vidgaIT.navigateToPage(vidgaIT.getAddres(address));
+        vidgaIT = new ITAType(browser.getBrowser(browserName));
+        vidgaIT.navigateToPage(address);
         vidgaIT.verifyPage();
 
         vidgaIT.selectPanelOnFirst();
@@ -83,10 +75,12 @@ public class TestBasicITA {
         System.out.println("Summary of the products is displayed");
     }
 
-
     @AfterMethod
     public void afterMethod() {
         vidgaIT.closeBrowser();
     }
+
 }
+
+
 
