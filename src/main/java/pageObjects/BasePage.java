@@ -100,10 +100,5 @@ public class BasePage {
         }
 
 
-        /*
-
-         */
-
-
     }
 }

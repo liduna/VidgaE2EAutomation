@@ -13,7 +13,7 @@ public class TestBasicSWE {
     /**
      * in the brackets there is allocation of dataProvider, specified by name and class, which fetches the data for the test
      */
-    /** I initialize the initlializer here so that I can */
+    /** I initialize the initlializer here*/
 
     POSweType.Initializer browser = new POSweType.Initializer();
     POSweType vidgaSE;
@@ -47,7 +47,7 @@ public class TestBasicSWE {
     @Test(dataProvider = "chrome/SWETypeLocation", dataProviderClass = DPswedishType.class)
     public void parameterizedSWE(String browserName, String address) {
 
-        //POSweType.Initializer browser = new POSweType.Initializer();
+
         vidgaSE = browser.startApp(browserName);
 
         vidgaSE.navigateToPage(vidgaSE.getAddres(address));

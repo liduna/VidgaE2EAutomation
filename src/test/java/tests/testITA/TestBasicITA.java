@@ -3,7 +3,6 @@ package tests.testITA;
 import customDataProvider.DPItalianType;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
-import org.testng.annotations.AfterSuite;
 import org.testng.annotations.Test;
 import pageObjects.ITA.POItalyType;
 
