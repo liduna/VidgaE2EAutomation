@@ -42,7 +42,7 @@ public class TestBasicITA {
     }
 
 
-    @Test(dataProvider = "browser/ITATypeLocation", dataProviderClass= DPItalianType.class)
+    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass= DPItalianType.class)
     public void first_test_Italian_Live(String browserName, String address) {
 
 
@@ -63,7 +63,7 @@ public class TestBasicITA {
 
     }
 
-    @Test(dataProvider = "browser/ITATypeLocation", dataProviderClass= DPItalianType.class)
+    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass= DPItalianType.class)
     public void dropDown_test_Italian_Live(String browserName, String address) {
 
 

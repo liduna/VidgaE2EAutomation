@@ -9,14 +9,14 @@ public class DPswedishType {
 
 
     @DataProvider (name = "chrome/SWETypeLocation")
-    public static Object [][] getData (){
+    public static Object [][] getChrome_SweType (){
 
         Object[][] data= {{"chrome", "https://www.ikea.com/se/sv/planners/vidga-planner/"}, {"chrome", "https://www.ikea.com/au/en/planners/vidga-planner/"}};
         return data;
     }
 
     @DataProvider (name = "edge/SWETypeLocation")
-    public static Object [][] getEdgeData (){
+    public static Object [][] getEdge_SweType (){
 
         Object[][] data= {{"edge", "https://www.ikea.com/se/sv/planners/vidga-planner/"}, {"edge", "https://www.ikea.com/au/en/planners/vidga-planner/"}};
         return data;
