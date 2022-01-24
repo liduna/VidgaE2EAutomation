@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="All Test Suite">
+    <test verbose="2" preserve-order="true" name="C:/Users/ZenBook PRO/IdeaProjects/VidgaE2EAutomation">
+        <classes>
+            <class name="tests.testSWE.TestBasicSWE">
+                <methods>
+                    <include name="first_test_Swedish_Live"/>
+                    <include name="parameterizedSWE"/>
+                </methods>
+            </class>
+            <class name="tests.testITA.TestBasicITA">
+                <methods>
+                    <include name="first_test_Italian_Live"/>
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
