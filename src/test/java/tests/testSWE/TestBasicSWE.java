@@ -1,7 +1,7 @@
 package tests.testSWE;
 
 import customDataProvider.DataSWE;
-import driverManager.DriverFactory;
+import driverFactory.DriverFactory;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
