@@ -7,11 +7,12 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pageObjects.ITA.ITAType;
 
+import static org.testng.Assert.assertTrue;
+
 
 public class TestBasicITA {
 
-/** hrere a create a class variable, so I can use it throughout the tests*/
-
+/** here I create class variables */
     DriverFactory browser = new DriverFactory();
     ITAType vidgaIT;
 
@@ -52,7 +53,7 @@ public class TestBasicITA {
         vidgaIT.chooseCeiling();
         vidgaIT.chooseWhite();
 
-        Assert.assertTrue(vidgaIT.getSummary().isDisplayed());
+        assertTrue(vidgaIT.getSummary().isDisplayed());
         System.out.println("Summary of the products is displayed");
 
     }
@@ -71,7 +72,7 @@ public class TestBasicITA {
         vidgaIT.choosTripleRailings();
         vidgaIT.chooseWhite();
 
-        Assert.assertTrue(vidgaIT.getSummary().isDisplayed());
+        assertTrue(vidgaIT.getSummary().isDisplayed());
         System.out.println("Summary of the products is displayed");
     }
 

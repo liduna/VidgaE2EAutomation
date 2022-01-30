@@ -2,10 +2,13 @@ package tests.testSWE;
 
 import customDataProvider.DataSWE;
 import driverFactory.DriverFactory;
+import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.Test;
 import pageObjects.SWE.SWEType;
+
+import static org.testng.Assert.assertTrue;
 
 
 public class TestBasicSWE {
@@ -34,9 +37,10 @@ public class TestBasicSWE {
         vidgaSE.add15CM();
         vidgaSE.chooseCeiling();
 
+
         /** assertion */
 
-        Assert.assertTrue(vidgaSE.getSummary().isDisplayed());
+        assertTrue(vidgaSE.getSummary().isDisplayed());
         System.out.println("Summary of the products is displayed");
 
 
@@ -56,7 +60,7 @@ public class TestBasicSWE {
         vidgaSE.add15CM();
         vidgaSE.chooseCeiling();
 
-        Assert.assertTrue(vidgaSE.getSummary().isDisplayed());
+        assertTrue(vidgaSE.getSummary().isDisplayed());
         System.out.println("Summary of the products is displayed");
 
 

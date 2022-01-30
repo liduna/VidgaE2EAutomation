@@ -16,7 +16,7 @@ public abstract class BasePage {
 
     private static final int TIMEOUT = 15;
 
-    protected WebDriver driver;
+    private WebDriver driver;
     private WebDriverWait wait;
 
     public BasePage(WebDriver driver) {
