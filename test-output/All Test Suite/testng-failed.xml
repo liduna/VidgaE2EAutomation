@@ -5,8 +5,7 @@
     <classes>
       <class name="tests.testSWE.TestBasicSWE">
         <methods>
-          <include name="first_test_Swedish_Live" invocation-numbers="0 1"/>
-          <include name="afterMethod"/>
+          <include name="browserParamSWEType" invocation-numbers="0 1"/>
         </methods>
       </class> <!-- tests.testSWE.TestBasicSWE -->
     </classes>

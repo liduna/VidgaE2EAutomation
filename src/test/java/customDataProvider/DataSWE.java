@@ -22,5 +22,12 @@ public class DataSWE {
         return data;
     }
 
+    @DataProvider (name = "firefox/SWETypeLocation")
+    public static Object [][] getFirefox_SweType (){
+
+        Object[][] data= {{"firefox", "https://www.ikea.com/se/sv/planners/vidga-planner/"}, {"firefox", "https://www.ikea.com/au/en/planners/vidga-planner/"}};
+        return data;
+    }
+
 
 }

@@ -37,8 +37,11 @@ public class ITAType extends BasePage {
     @FindBy(xpath = "//*[@id='root']/div/div[1]/img")
     WebElement introPicutre;
 
-    @FindBy(css = "#root > div > div.WhatsIncluded_wrapper__17GYG > h3")
+    @FindBy(className = "Checkout__total-price")         //   //*[@id="root"]/div/div[8]/div/div/ikea-component/div/div[1]/ikea-component/div/div[2]/b/span/span/span      //"Checkout__total-price")  //css #root > div > div.WhatsIncluded_wrapper__17GYG > h3 //WhatsIncluded_whatsIncluded__2XDbC  //WhatsIncluded__item-total-price
     WebElement summary;
+
+   /* @FindBy(css = "#root > div > div.WhatsIncluded_wrapper__17GYG > h3")
+    WebElement summary;*/
 
 
     /**
@@ -52,7 +55,7 @@ public class ITAType extends BasePage {
     WebElement removing_Layer;
 
 
-    @FindBy(id = "next_button_layer_options")//(id = "next_button_layer_options")#next_button_layer_options //*[@id="next_button_layer_options"]
+    @FindBy(className = "Layer_nextButton__2iohh")//(id = "next_button_layer_options")#next_button_layer_options //*[@id="next_button_layer_options"]
     WebElement btn_next_layer;
 
     @FindAll({
@@ -167,10 +170,12 @@ public class ITAType extends BasePage {
      */
 
     public void addLayer() {
+        ///waitForElementToBeClickable(adding_Layer);
         waitForElementToBeClickable(By.id("add_layer_button"));
         javaScriptExecutorClick(adding_Layer);
         waitForElementToAppear(By.id("next_button_layer_options"));
-        javaScriptExecutorClick(btn_next_measurements);
+        if (btn_next_layer.isDisplayed()) System.out.println("btndisplayed");
+        javaScriptExecutorClick(btn_next_layer);
 
     }
 
@@ -180,14 +185,17 @@ public class ITAType extends BasePage {
         if (btn_next_measurements.isDisplayed()) {
             System.out.println("next Measurements");
         }
+        javaScriptExecutorClick(btn_next_measurements);
 
     }
 
     public void add15CM() {
 
         javaScriptExecutorClick(adding_15);
-
         System.out.println("adding 15 cm");
+
+    }
+    public void clickNextAdditional(){
         javaScriptExecutorClick(btn_next_additional);
     }
 
@@ -212,12 +220,14 @@ public class ITAType extends BasePage {
      *****/
 
     public void selectPanelOnFirst() {
+        //waitForElementToBeClickable(adding_Layer);
         waitForElementToBeClickable(By.id("add_layer_button"));
         javaScriptExecutorClick(adding_Layer);
         javaScriptExecutorClick(drop_down_btn);
 
         //javaScriptExecutorClick(dropDown2);
-        waitForElementToBeClickable(By.xpath
+        //waitForElementToBeClickable(panels);
+       waitForElementToBeClickable(By.xpath
                 ("//*[@id=\"root\"]/div/div[1]/div/div[1]/ikea-component/div/div[2]/" +
                         "ikea-component/div/div[1]/div[1]/div/ikea-component-body/ikea-component-body/dropdown-option[2]"));
         //panels.click();
@@ -232,9 +242,11 @@ public class ITAType extends BasePage {
     }
 
     public void selectPanelOnSecond() {
+
+       /// waitForElementToBeClickable(drop_down_btn);
         waitForElementToBeClickable(By.id("add_layer_button"));
         javaScriptExecutorClick(drop_down_btn);
-
+        ///waitForElementToBeClickable(panels);
         //javaScriptExecutorClick(dropDown2);
         waitForElementToBeClickable(By.xpath
                 ("//*[@id=\"root\"]/div/div[1]/div/div[1]/ikea-component/div/div[2]/" +
@@ -243,7 +255,7 @@ public class ITAType extends BasePage {
         System.out.println(panels.getText());
         javaScriptExecutorClick(adding_Layer);
 
-
+        //waitForElementToBeClickable(second_layer_dropdown);
         waitForElementToBeClickable(By.xpath("//*[@id=\"root\"]/div/div[1]/div/div[2]/ikea-component/div/div[1]/span/div"));
         second_layer_dropdown.click();
 
@@ -260,6 +272,11 @@ public class ITAType extends BasePage {
 
     public void chooseWhite() {
         javaScriptExecutorClick(white_Picker);
+
+    }
+    public boolean verifySummaryIsPresent(String price) {
+        return price.startsWith("0") || price.contains("0.00") || price.equals("0:-") || price.isEmpty()
+                || price.equals("(0:-") || price.startsWith("€ 0");
 
     }
 

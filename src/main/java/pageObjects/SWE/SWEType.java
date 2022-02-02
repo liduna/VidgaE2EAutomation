@@ -6,6 +6,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindAll;
 import org.openqa.selenium.support.FindBy;
 
+import org.openqa.selenium.support.FindBys;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import pageObjects.BasePage;
 
 /**
@@ -39,9 +41,18 @@ public class SWEType extends BasePage {
     @FindBy(xpath = "//*[@id='root']/div/div[1]/img")
     WebElement introPicutre;
 
-    @FindBy(css = "#root > div > div.WhatsIncluded_wrapper__17GYG > h3")
+    /*@FindAll({
+            @FindBy(className="IKEA__price-amount"),
+            @FindBy(xpath="//*[@id=\"root\"]/div/div[8]/div/div/ikea-component/div/div[1]/ikea-component/div/div[2]/b/span/span/span")
+    })
+    WebElement summary;*/
+
+    @FindBy(className = "Checkout__total-price")         //   //*[@id="root"]/div/div[8]/div/div/ikea-component/div/div[1]/ikea-component/div/div[2]/b/span/span/span      //"Checkout__total-price")  //css #root > div > div.WhatsIncluded_wrapper__17GYG > h3 //WhatsIncluded_whatsIncluded__2XDbC  //WhatsIncluded__item-total-price
     WebElement summary;
 
+
+    @FindBy(className = "AddToBag__button AddToBag__button--cart")//Checkout__add-to-bag
+    WebElement cartButton;
 
 
     /**
@@ -55,7 +66,7 @@ public class SWEType extends BasePage {
     WebElement removing_Layer;
 
 
-    @FindBy(id = "next_button_layer_options")//(id = "next_button_layer_options")#next_button_layer_options //*[@id="next_button_layer_options"]
+    @FindBy(id = "next_button_layer_options")//(id = "next_button_layer_options")#next_button_layer_options //*[@id="next_button_layer_options" className Layer_nextButton__2iohh]
     WebElement btn_next_layer;
 
     @FindAll({
@@ -125,7 +136,7 @@ public class SWEType extends BasePage {
     }
 
 
-    public void verifyOnPage() {
+    public void verifyRightPage() {
         waitForElementToAppear(By.className("page-title"));
         waitForElementToAppear(By.id("vidga-application"));
         switchToFrame(prodFrame);
@@ -134,47 +145,75 @@ public class SWEType extends BasePage {
     }
 
 
-    public void verifyIsPresent() {
-        waitForElementToAppear(By.id("next_button_layer_options"));
-
-        System.out.println("next is displayed");
-    }
-
     /**
      * INTERCEPTING ELEMENTS METHODS
      */
 
     public void addLayer() {
         waitForElementToBeClickable(By.id("add_layer_button"));
-        javaScriptExecutorClick(adding_Layer);
-        waitForElementToAppear(By.id("next_button_layer_options"));
-        javaScriptExecutorClick(btn_next_measurements);
+        adding_Layer.click();
+        //waitForElementToBeClickable(adding_Layer);
+        // javaScriptExecutorClick(adding_Layer);
+
 
     }
 
+    public void confirmLayer() {
+
+        // waitForElementToBeClickable(btn_next_layer);
+        //btn_next_layer.click();
+        waitForElementToBeClickable(By.id("next_button_layer_options"));
+        javaScriptExecutorClick(btn_next_layer);
+
+
+    }
+
+
     public void confirmMeasurementsNoInput() {
-        waitForElementToAppear(By.id("next_button_measurements"));
+        ///waitForElementToBeClickable(btn_next_measurements);
+
+        waitForElementToBeClickable(By.id("next_button_measurements"));
+        btn_next_measurements.click();
+        // javaScriptExecutorClick(btn_next_measurements);
 
 
     }
 
     public void add15CM() {
-
+        //adding_15.click();
+        //waitForElementToBeClickable(By.id("true"));
         javaScriptExecutorClick(adding_15);
-
-
-        javaScriptExecutorClick(btn_next_additional);
-
     }
 
+    public void clickNextAdditional(){
+        javaScriptExecutorClick(btn_next_additional);
+    }
     public void chooseCeiling() {
         javaScriptExecutorClick(ceiling_picker);
 
     }
 
     public WebElement getSummary() {
+        //waitForElementToAppear(By.className("IKEA__price-amount"));
         return summary;
         //waitForElementToAppear(By.cssSelector("#root > div > div.WhatsIncluded_wrapper__2Y0in > h3"));
+
+    }
+
+    public WebElement getPageIkeaTitle() {
+
+        return this.pictureTitle;
+        //waitForElementToAppear(By.cssSelector("#root > div > div.WhatsIncluded_wrapper__2Y0in > h3"));
+
+    }
+
+    public WebElement getCartButton() {
+
+        return cartButton;
+    }
+
+    public boolean verifySummaryIsPresent(String price) {
+        return price.equals("0") || price.contains("0.00") || price.equals("0:-") || price.isEmpty() || price.contains("(0:-");
 
     }
 
@@ -182,5 +221,6 @@ public class SWEType extends BasePage {
         switchToFrame(silentFrame);
 
     }
+
 
 }

@@ -40,40 +40,48 @@ public class TestBasicITA {
 
 
     @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass = DataITA.class)
-    public void first_test_Italian_Live(String browserName, String address) {
+    public void first_test_Italian_Live(String browserName, String address) throws InterruptedException {
 
 
         vidgaIT = new ITAType(browser.getBrowser(browserName));
         vidgaIT.navigateToPage(address);
+
         vidgaIT.verifyPage();
 
         vidgaIT.addLayer();
         vidgaIT.confirmMeasurementsNoInput();
         vidgaIT.add15CM();
+        vidgaIT.clickNextAdditional();
         vidgaIT.chooseCeiling();
         vidgaIT.chooseWhite();
 
-        assertTrue(vidgaIT.getSummary().isDisplayed());
-        System.out.println("Summary of the products is displayed");
+        String price = vidgaIT.getSummary().getText();
+        System.out.println(price);
+        Assert.assertEquals(vidgaIT.verifySummaryIsPresent(price), false, "summary is zero or is not displayed");
+
+        /*assertTrue(vidgaIT.getSummary().isDisplayed());
+        System.out.println("Summary of the products is displayed");*/
 
     }
 
-    @Test(dataProvider = "chrome/ITATypeLocation", dataProviderClass = DataITA.class)
+    @Test(dataProvider = "edge/ITATypeLocation", dataProviderClass = DataITA.class)
     public void dropDown_test_Italian_Live(String browserName, String address) {
 
         vidgaIT = new ITAType(browser.getBrowser(browserName));
         vidgaIT.navigateToPage(address);
+
         vidgaIT.verifyPage();
 
-        vidgaIT.selectPanelOnFirst();
+        vidgaIT.addLayer();
         vidgaIT.confirmMeasurementsNoInput();
         vidgaIT.add15CM();
+        vidgaIT.clickNextAdditional();
         vidgaIT.chooseCeiling();
-        vidgaIT.choosTripleRailings();
         vidgaIT.chooseWhite();
 
-        assertTrue(vidgaIT.getSummary().isDisplayed());
-        System.out.println("Summary of the products is displayed");
+        String price = vidgaIT.getSummary().getText();
+        System.out.println(price);
+        Assert.assertEquals(vidgaIT.verifySummaryIsPresent(price), false, "summary is zero or is not displayed");
     }
 
     @AfterMethod
